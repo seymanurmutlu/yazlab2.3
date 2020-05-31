@@ -4,26 +4,88 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.Parent;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
 
 
 public class Main extends Application {
+	
+	static AnchorPane root;
+	private static int cursor=0;
+	
+	static List<GridPane> grid=new ArrayList<GridPane>();
+	
+	
 	public static void main(String[] args) {
+		MainController cntrl=new MainController();
+		
+		Graph graph = new SingleGraph("Tutorial 1");
+		graph.addNode("A" );
+		graph.addNode("B" );
+		graph.addNode("C" );
+		graph.addEdge("AB", "A", "B");
+		graph.addEdge("BC", "B", "C");
+		graph.addEdge("CA", "C", "A");
+		
+		for(int i=0;i<cntrl.muslukSayisi;i++) {
+			
+		}
+		
+		  for (Node node : graph) {
+		        node.addAttribute("ui.label", node.getId());
+		    }
+		  
+		graph.display();
+
 		launch(args);
 	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+	try {
+			root=(AnchorPane)FXMLLoader.load(getClass().getResource("/application/anchor.fxml"));
+			
+			grid.add((GridPane)FXMLLoader.load(getClass().getResource("/application/Main.fxml")));
+			grid.add((GridPane)FXMLLoader.load(getClass().getResource("/application/First.fxml")));
+		
+			root.getChildren().add(grid.get(0));
+			Scene scene = new Scene(root,400,400);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setTitle("Havuz Problemi");
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+		}catch(Exception e){
+		}
+		
+		/*Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setTitle("Havuz Problemi");
 		primaryStage.setScene(scene);
-		primaryStage.show();
+		primaryStage.show();*/
+		
+	}
 
+public static void set_Pane(int idx) {
+		
+		root.getChildren().remove(grid.get(cursor));
+		root.getChildren().add(grid.get(idx));
+		cursor=idx;	
 	}
 	
-
+	public static GridPane GetPane(int idx) {
+		return grid.get(idx);
+	}
+	
 }
+	
