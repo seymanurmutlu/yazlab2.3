@@ -28,7 +28,7 @@ public class MainController{
 	private TextField txtMuslukSayisi;
 	
 	
-	public void TakeMuslukSayisi() {
+	public void TakeMuslukSayisi(ActionEvent event) {
 		
 		if( txtMuslukSayisi.getText().equals("")) {
 			lblStatus.setText("Lutfen Musluk Sayisini Giriniz!");
@@ -39,6 +39,5 @@ public class MainController{
 			lblStatus.setText("Generating Graph..");
 			Main.set_Pane(1);
 		}
-		
 	}
 }
