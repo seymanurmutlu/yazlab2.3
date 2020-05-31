@@ -12,5 +12,7 @@
       <TextField fx:id="txtBoruSayisi" layoutX="70.0" layoutY="100.0" promptText="Boru Sayisi" />
       <TextField fx:id="txtKapasite" layoutX="70.0" layoutY="137.0" promptText="Kapasite" />
       <Label fx:id="lblStatus" layoutX="70.0" layoutY="34.0" textFill="#c63939" />
+      <Button fx:id="close" layoutX="150.0" layoutY="178.0" mnemonicParsing="false" onAction="#newLay" prefHeight="25.0" prefWidth="67.0" text="Open new" />
+      
    </children>
 </AnchorPane>
