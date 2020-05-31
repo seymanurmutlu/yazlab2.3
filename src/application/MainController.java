@@ -2,48 +2,56 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
 //this class controls Main.fxml file
-public class MainController {
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
+
+public class MainController{
+	
+	public int muslukSayisi;
+	
+	
 	@FXML
 	private Label lblStatus;
 	
 	@FXML
 	private TextField txtMuslukSayisi;
 	
-	@FXML
-	private TextField txtBoruSayisi;
 	
-	@FXML
-	private TextField txtKapasite;
-	
-	public void TakeInfos(ActionEvent event ) {
-		if( txtMuslukSayisi.getText().equals("") || txtBoruSayisi.getText().equals("") || txtKapasite.getText().equals("") ) {
-			lblStatus.setText("Tum alanlari doldurunuz.");
+	public void TakeInfos() {
+		
+		if( txtMuslukSayisi.getText().equals("")) {
+			lblStatus.setText("Lutfen Musluk Sayisini Giriniz!");
 			System.out.println("BOS");
 		}else {
-			lblStatus.setText("Generating Graph..");
 			
+			lblStatus.setText("Generating Graph..");
 		}
-		System.out.println( txtMuslukSayisi.getText() + " " + txtBoruSayisi.getText() + " " + txtKapasite.getText() );
+		
 	}
 	
-	public void newLay(ActionEvent event ) {
-        StackPane root2 = new StackPane();
-        Label label = new Label("Your are now in the second form");
-        root2.getChildren().add(label);
-        Scene secondScene = new Scene(root2, 500,500);
-        Stage secondStage = new Stage();
-        secondStage.setScene(secondScene); // set the scene
-        secondStage.setTitle("Second Form");
-        secondStage.show();
+	@FXML
+	public void TakeMuslukSayisi(ActionEvent event) {
+		
+		TakeInfos();
+		
+		muslukSayisi=Integer.valueOf(txtMuslukSayisi.getText());
+		System.out.println( "Musluk Sayisi: "+txtMuslukSayisi.getText());
+		
+		Main.set_Pane(1);
 	}
+
+	
 	
 
 }

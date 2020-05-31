@@ -11,3 +11,10 @@
 }
 
 
+node {
+	fill-color: grey;
+	size: 10px;
+	stroke-mode: plain;
+	stroke-color: black;
+	stroke-width: 1px;
+}
