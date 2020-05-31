@@ -16,9 +16,11 @@ import java.util.Scanner;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
+
+
 public class MainController{
 	
-	public int muslukSayisi;
+	public static int muslukSayisi;
 	
 	@FXML
 	private Label lblStatus;
@@ -40,10 +42,12 @@ public class MainController{
 
 	        graph.setStrict(false);
 	        graph.setAutoCreate(true);
+
 	        
 			for(int i=0;i<muslukSayisi;i++) {
 				graph.addNode(i+"");
-			}			
+			}
+			
 			  for (Node node : graph) {
 			        node.addAttribute("ui.label", node.getId());
 			    }
