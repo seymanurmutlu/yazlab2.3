@@ -25,27 +25,9 @@ public class Main extends Application {
 	
 	
 	public static void main(String[] args) {
-		MainController cntrl=new MainController();
-		
-		Graph graph = new SingleGraph("Tutorial 1");
-		graph.addNode("A" );
-		graph.addNode("B" );
-		graph.addNode("C" );
-		graph.addEdge("AB", "A", "B");
-		graph.addEdge("BC", "B", "C");
-		graph.addEdge("CA", "C", "A");
-		
-		for(int i=0;i<cntrl.muslukSayisi;i++) {
-			
-		}
-		
-		  for (Node node : graph) {
-		        node.addAttribute("ui.label", node.getId());
-		    }
-		  
-		graph.display();
 
-		launch(args);
+		launch(args);		
+
 	}
 	
 	@Override

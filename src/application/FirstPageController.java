@@ -24,8 +24,8 @@ public class FirstPageController {
 	@FXML
 	private TextField txtKapasite;
 	
+
 	public void TakeInfos(ActionEvent event ) {
-		
 	
 		if( txtMuslukSayisi.getText().equals("") ||  txtKapasite.getText().equals("") ) {
 			lblStatus.setText("Tum alanlari doldurunuz.");
@@ -37,14 +37,6 @@ public class FirstPageController {
 		}
 		System.out.println( "Musluk Sayisi: "+txtMuslukSayisi.getText() + "\nKapasite: " + txtKapasite.getText() );
 		
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	}

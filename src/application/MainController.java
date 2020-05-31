@@ -20,7 +20,6 @@ public class MainController{
 	
 	public int muslukSayisi;
 	
-	
 	@FXML
 	private Label lblStatus;
 	
@@ -29,7 +28,6 @@ public class MainController{
 	
 	
 	public void TakeMuslukSayisi(ActionEvent event) {
-		
 		if( txtMuslukSayisi.getText().equals("")) {
 			lblStatus.setText("Lutfen Musluk Sayisini Giriniz!");
 			System.out.println("BOS");
@@ -37,6 +35,21 @@ public class MainController{
 			muslukSayisi=Integer.valueOf(txtMuslukSayisi.getText());
 			System.out.println( "Musluk Sayisi: "+txtMuslukSayisi.getText());
 			lblStatus.setText("Generating Graph..");
+			
+			Graph graph = new SingleGraph("You are viewing the nodes");
+
+	        graph.setStrict(false);
+	        graph.setAutoCreate(true);
+	        
+			for(int i=0;i<muslukSayisi;i++) {
+				graph.addNode(i+"");
+			}			
+			  for (Node node : graph) {
+			        node.addAttribute("ui.label", node.getId());
+			    }
+			  
+			graph.display();
+			
 			Main.set_Pane(1);
 		}
 	}
