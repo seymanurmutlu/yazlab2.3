@@ -28,30 +28,17 @@ public class MainController{
 	private TextField txtMuslukSayisi;
 	
 	
-	public void TakeInfos() {
+	public void TakeMuslukSayisi() {
 		
 		if( txtMuslukSayisi.getText().equals("")) {
 			lblStatus.setText("Lutfen Musluk Sayisini Giriniz!");
 			System.out.println("BOS");
 		}else {
-			
+			muslukSayisi=Integer.valueOf(txtMuslukSayisi.getText());
+			System.out.println( "Musluk Sayisi: "+txtMuslukSayisi.getText());
 			lblStatus.setText("Generating Graph..");
+			Main.set_Pane(1);
 		}
 		
 	}
-	
-	@FXML
-	public void TakeMuslukSayisi(ActionEvent event) {
-		
-		TakeInfos();
-		
-		muslukSayisi=Integer.valueOf(txtMuslukSayisi.getText());
-		System.out.println( "Musluk Sayisi: "+txtMuslukSayisi.getText());
-		
-		Main.set_Pane(1);
-	}
-
-	
-	
-
 }
