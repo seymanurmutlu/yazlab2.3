@@ -1,22 +1,35 @@
 package application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 //this class controls Main.fxml file
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
-public class FirstPageController {
+public class FirstPageController implements Initializable{
 	
-	public int firstNd,secondNd,startNd,finishNd,capacity;
+	public static int firstNd,secondNd,startNd,finishNd,capacity;
+	public static ArrayList<EdgeInfo> edgeList=new ArrayList<EdgeInfo>();
 	
+	final ObservableList<EdgeInfo> data=FXCollections.observableArrayList();
 	
 	@FXML
 	private Label lblStatus;
@@ -35,8 +48,13 @@ public class FirstPageController {
 	
 	@FXML
 	private TextField txtCapacity;
-	
-	
+     
+     @FXML
+     private TableView EdgeInfoTable;
+     
+     
+    
+     
 	public void saveNodeInfos(ActionEvent event) {
 		
 		startNd=Integer.valueOf(startNode.getText());
@@ -57,8 +75,10 @@ public class FirstPageController {
 			node.addAttribute("ui.label", node.getId());
 			if(node.getId().equalsIgnoreCase(String.valueOf(startNd) ) || node.getId().equalsIgnoreCase(String.valueOf(finishNd))) {
 				node.addAttribute("ui.style", "fill-color: rgb(0,100,255);");
+				
 			}
 		 }  
+		
 		graph.display();
 	}
 	
@@ -68,10 +88,18 @@ public class FirstPageController {
 		secondNd=Integer.valueOf(secondNode.getText());
 		capacity=Integer.valueOf(txtCapacity.getText());
 		
-		System.out.println("Ilk Dugum: "+firstNd);
-		System.out.println("Ikinci Dugum: "+secondNd);
-		System.out.println("Kapasite Miktari: "+secondNd);
 		
+	data.add(
+				new EdgeInfo(
+						String.valueOf(firstNode.getText()),
+				String.valueOf(secondNode.getText()),
+				String.valueOf(txtCapacity.getText())));
+		
+				firstNode.clear();
+				secondNode.clear();
+				txtCapacity.clear();
+				
+				
 	}
 	
 	public void minFlow(ActionEvent event) {
@@ -83,5 +111,25 @@ public class FirstPageController {
 		
 		System.out.println("Max Flow");
 	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+	
+		TableColumn firstColumn=new TableColumn("Birinci Dugum");
+		TableColumn secondColumn=new TableColumn("Ikinci Dugum");
+		TableColumn thirdColumn=new TableColumn("Kapasite");
+		EdgeInfoTable.getColumns().addAll(firstColumn,secondColumn,thirdColumn);
+	
+		
+		firstColumn.setCellValueFactory(new PropertyValueFactory<EdgeInfo,String>("firstNd"));
+		secondColumn.setCellValueFactory(new PropertyValueFactory<EdgeInfo,String>("secondNd"));
+		thirdColumn.setCellValueFactory(new PropertyValueFactory<EdgeInfo,String>("capacity"));
+		
+		EdgeInfoTable.setItems(data);
+		
+	}
+	
+	
+	
 
 }

@@ -54,6 +54,7 @@ public class MainController{
 			  
 			graph.display();
 			
+			
 			Main.set_Pane(1);
 		}
 	}

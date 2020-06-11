@@ -28,6 +28,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		
 		launch(args);		
+		//nodeInformation.launch(args);
 	}
 	
 	@Override
@@ -40,7 +41,7 @@ public class Main extends Application {
 			grid.add((GridPane)FXMLLoader.load(getClass().getResource("/application/First.fxml")));
 		
 			root.getChildren().add(grid.get(0));
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,600,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Havuz Problemi");
 			primaryStage.setScene(scene);
@@ -48,13 +49,6 @@ public class Main extends Application {
 			
 		}catch(Exception e){
 		}
-		
-		/*Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		primaryStage.setTitle("Havuz Problemi");
-		primaryStage.setScene(scene);
-		primaryStage.show();*/
 		
 	}
 
