@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -66,9 +65,9 @@
             <Insets top="15.0" />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="grafOlustur" mnemonicParsing="false" onAction="#setGraph" text="Grafi Olustur" GridPane.rowIndex="1">
+      <Button fx:id="grafOlustur" mnemonicParsing="false" onAction="#setGraph" prefHeight="25.0" prefWidth="79.0" text="Ekle" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets left="55.0" top="180.0" />
+            <Insets left="15.0" top="180.0" />
          </GridPane.margin>
       </Button>
       <TextField fx:id="txtCapacity" alignment="TOP_CENTER" promptText="Kapasite Miktari" GridPane.rowIndex="1">
@@ -86,7 +85,7 @@
             <Insets left="65.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#minFlow" text="Minimum Akis" GridPane.columnIndex="1">
+      <Button mnemonicParsing="false" onAction="#minCut" text="Minimum Akis" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="190.0" />
          </GridPane.margin>
@@ -100,5 +99,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="graphButton" mnemonicParsing="false" onAction="#showGraph" prefHeight="25.0" prefWidth="85.0" text="Grafi Ciz" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="115.0" top="180.0" />
+         </GridPane.margin>
+      </Button>
    </children>
 </GridPane>
